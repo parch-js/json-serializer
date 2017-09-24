@@ -1,5 +1,7 @@
 "use strict";
 
+const Bluebird = require("bluebird");
+
 export default class JSONSerializer {
   async normalizeArrayResponse(instances) {
     const records = [];
@@ -15,7 +17,7 @@ export default class JSONSerializer {
     return records;
   }
 
-  normalizeRelationships(instance, payload) { return payload; }
+  normalizeRelationships(instance) { return payload; }
 
   normalizeResponse(instance, method, fallbackName) {
     switch (method) {
@@ -30,9 +32,7 @@ export default class JSONSerializer {
   }
 
   async normalizeSingularResponse(instance) {
-    const json = instance.toJSON();
-
-    await this.normalizeRelationships(instance, json);
+    await this.normalizeRelationships(instance);
 
     return json;
   }

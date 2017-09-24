@@ -47,6 +47,7 @@
     "yuidocjs": "^0.10.2"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
     "inflect": "^0.3.0",
     "nyc": "^10.2.0",
     "restify-errors": "^4.3.0",
@@ -84,9 +85,7 @@
       "es2015"
     ],
     "plugins": [
-      "babel-plugin-add-module-exports",
-      "transform-regenerator",
-      "transform-async-to-generator"
+      "babel-plugin-add-module-exports"
     ]
   },
   "nyc": {
