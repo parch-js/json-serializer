@@ -1,0 +1,13 @@
+{
+  "name": "@parch-js/json-serializer",
+  "url": "https://github.com/parch-js/json-serializer",
+  "version": "0.0.1",
+  "options": {
+    "exclude": "lib",
+    "helpers": ["node_modules/yuidoc-lucid-theme/helpers/helpers.js"],
+    "linkNatives": "true",
+    "outdir": "docs",
+    "paths": ["./src"],
+    "themedir": "node_modules/yuidoc-lucid-theme"
+  }
+}
