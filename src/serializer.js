@@ -1,21 +1,9 @@
 "use strict";
 
 export default class JSONSerializer {
-  async normalizeArrayResponse(instances) {
-    const records = [];
-
-    for (const instance of instances) {
-      const json = instance.toJSON();
-
-      await this.normalizeRelationships(instance, json);
-
-      records.push(json);
-    }
-
-    return records;
+  normalizeArrayResponse(instances) {
+    return Promise.resolve(instances);
   }
-
-  normalizeRelationships(instance, payload) { return payload; }
 
   normalizeResponse(instance, method, fallbackName) {
     switch (method) {
@@ -29,11 +17,7 @@ export default class JSONSerializer {
     }
   }
 
-  async normalizeSingularResponse(instance) {
-    const json = instance.toJSON();
-
-    await this.normalizeRelationships(instance, json);
-
-    return json;
+  normalizeSingularResponse(instance) {
+    return Promise.resolve(instance);
   }
 }

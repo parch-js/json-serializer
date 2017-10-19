@@ -1,9 +1,9 @@
 {
-  "name": "@parch-js/rest-serializer",
+  "name": "@parch-js/json-serializer",
   "version": "0.0.1",
-  "description": "RestSerializer for parch to normalize request/response",
+  "description": "JSONSerializer for parch to normalize request/response",
   "main": "index.js",
-  "repository": "https://github.com/parch-js/rest-serializer",
+  "repository": "parch-js/json-serializer",
   "author": "Dylan Foster <dylan947@gmail.com>",
   "license": "MIT",
   "keywords": [
@@ -14,8 +14,7 @@
   ],
   "scripts": {
     "build": "babel src -d lib",
-    "build:watch": "chokidar 'src/**' 'test/**/*.js' -c 'yarn build' --initial",
-    "coverage": "nyc yarn test",
+    "cover": "nyc yarn test",
     "changelog": "conventional-changelog -s -p angular -i CHANGELOG.md",
     "docs": "yuidoc . -o docs",
     "lint": "eslint ./src ./test",
@@ -23,8 +22,9 @@
     "prepublish": "yarn build",
     "pretest": "yarn build",
     "test": "NO_DEPRECATION=parch NODE_ENV=test mocha --recursive --compilers js:babel-register --timeout 5000",
-    "test:cover": "yarn coverage",
-    "watch": "chokidar 'src/**' 'test/**/*.js' -c 'yarn test' --initial"
+    "watch:build": "chokidar 'src/**' 'test/**/*.js' -c 'yarn build' --initial",
+    "watch:cover": "yarn cover",
+    "watch:test": "chokidar 'src/**' 'test/**/*.js' -c 'yarn test' --initial"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -84,13 +84,10 @@
       "es2015"
     ],
     "plugins": [
-      "babel-plugin-add-module-exports",
-      "transform-regenerator",
-      "transform-async-to-generator"
+      "babel-plugin-add-module-exports"
     ]
   },
   "nyc": {
-    "require": "regenerator-runtime/runtime",
     "reporter": [
       "text",
       "lcov",
