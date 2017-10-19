@@ -23,7 +23,7 @@
     "pretest": "yarn build",
     "test": "NO_DEPRECATION=parch NODE_ENV=test mocha --recursive --compilers js:babel-register --timeout 5000",
     "watch:build": "chokidar 'src/**' 'test/**/*.js' -c 'yarn build' --initial",
-    "watch:cover": "yarn cover",
+    "watch:cover": "chokidar 'src/**' 'test/**/*.js' -c 'yarn cover' --initial",
     "watch:test": "chokidar 'src/**' 'test/**/*.js' -c 'yarn test' --initial"
   },
   "devDependencies": {
