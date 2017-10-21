@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * @class JSONSerializer
+ * @constructor
+ */
 export default class JSONSerializer {
   /**
    * Returns an array of Sequelize instances

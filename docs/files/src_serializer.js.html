@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/serializer.js - @parch-js/json-serializer</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/css/lucid.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+            @parch-js/json-serializer
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/JSONSerializer"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+<div>
+    <div id="sidebar">
+    <div id="classes">
+        <ul id="api-classes" class="nav nav-list">
+                <li><a href="../classes/JSONSerializer.html">JSONSerializer</a></li>
+        </ul>
+    </div>
+    </div>
+</div>
+        </div>
+        <div class="span9">
+    <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>src/serializer.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+&quot;use strict&quot;;
+
+/**
+ * @class JSONSerializer
+ * @constructor
+ */
+export default class JSONSerializer {
+  /**
+   * Returns an array of Sequelize instances
+   *
+   * @method normalizeArrayResponse
+   * @param {Array} instances Sequelize instances
+   * @return {Promise}&lt;Object, Error&gt;
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * return orm.findAll(&quot;user&quot;).then(users =&gt; {
+   *   return serializer.normalizeArrayResponse(instances);
+   * }).then(response =&gt; {
+   *   /**
+   *    * [{
+   *    *   firstName: &quot;foo&quot;,
+   *    *   lastName; &quot;bar&quot;
+   *    * }]
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  normalizeArrayResponse(instances) {
+    return Promise.resolve(instances);
+  }
+
+  /**
+   * Takes one or several Sequelize intances and returns them.
+   *
+   * @method normalizeResponse
+   * @param {Object} instance
+   * @param {String} method
+   * @return {Promise}&lt;Object, Error&gt;
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * return orm.findOne(&quot;user&quot;, 1).then(user =&gt; {
+   *   return serializer.normalizeResponse(user, &quot;findOne&quot;);
+   * }).then(response =&gt; {
+   *   /**
+   *    * {
+   *    *   firstName: &quot;foo&quot;,
+   *    *   lastName; &quot;bar&quot;
+   *    * }
+   * })
+   *
+   * return orm.findAll(&quot;user&quot;).then(users =&gt; {
+   *   return serializer.normalizeResponse(users, &quot;findAll&quot;);
+   * }).then(response =&gt; {
+   *   /**
+   *    * [{
+   *    *   firstName: &quot;foo&quot;,
+   *    *   lastName: &quot;bar&quot;
+   *    * }]
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  normalizeResponse(instance, method, fallbackName) {
+    switch (method) {
+      case &quot;createRecord&quot;:
+      case &quot;findOne&quot;:
+      case &quot;queryRecord&quot;:
+      case &quot;updateRecord&quot;:
+        return this.normalizeSingularResponse(instance, fallbackName);
+      case &quot;findAll&quot;:
+        return this.normalizeArrayResponse(instance, fallbackName);
+      default:
+        return this.normalizeSingularResponse(instance, fallbackName);
+    }
+  }
+
+  /**
+   * Returns a single sequelize instance
+   *
+   * @method normalizeSingularResponse
+   * @param {Object} instance Sequelize model instance
+   * @return {Promise}&lt;Object, Error&gt;
+   *
+   * @example
+   * &#x60;&#x60;&#x60;javascript
+   * return orm.findOne(&quot;user&quot;, 1).then(user =&gt; {
+   *   return serializer.normalizeSingularResponse(instance, &quot;findOne&quot;);
+   * }).then(response =&gt; {
+   *   /**
+   *    * {
+   *    *   firstName: &quot;foo&quot;,
+   *    *   lastName; &quot;bar&quot;
+   *    * }
+   * });
+   * &#x60;&#x60;&#x60;
+   */
+  normalizeSingularResponse(instance) {
+    return Promise.resolve(instance);
+  }
+}
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

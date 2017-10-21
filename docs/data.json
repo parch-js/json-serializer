@@ -1,0 +1,127 @@
+{
+    "project": {
+        "name": "@parch-js/json-serializer",
+        "url": "https://github.com/parch-js/json-serializer",
+        "version": "0.0.1",
+        "description": "JSONSerializer for parch to normalize request/response"
+    },
+    "files": {
+        "docs/assets/vendor/bootstrap/js/bootstrap.min.js": {
+            "name": "docs/assets/vendor/bootstrap/js/bootstrap.min.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/serializer.js": {
+            "name": "src/serializer.js",
+            "modules": {},
+            "classes": {
+                "JSONSerializer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "JSONSerializer": {
+            "name": "JSONSerializer",
+            "shortname": "JSONSerializer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/serializer.js",
+            "line": 3,
+            "is_constructor": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "docs/assets/vendor/bootstrap/js/bootstrap.min.js",
+            "line": 1,
+            "description": "Bootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
+            "class": "JSONSerializer"
+        },
+        {
+            "file": "src/serializer.js",
+            "line": 8,
+            "description": "Returns an array of Sequelize instances",
+            "itemtype": "method",
+            "name": "normalizeArrayResponse",
+            "params": [
+                {
+                    "name": "instances",
+                    "description": "Sequelize instances",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "<Object, Error>",
+                "type": "Promise"
+            },
+            "example": [
+                "\n```javascript\nreturn orm.findAll(\"user\").then(users => {\n  return serializer.normalizeArrayResponse(instances);\n}).then(response => {\n  /**\n   * [{\n   *   firstName: \"foo\",\n   *   lastName; \"bar\"\n   * }]\n});\n```"
+            ],
+            "class": "JSONSerializer"
+        },
+        {
+            "file": "src/serializer.js",
+            "line": 32,
+            "description": "Takes one or several Sequelize intances and returns them.",
+            "itemtype": "method",
+            "name": "normalizeResponse",
+            "params": [
+                {
+                    "name": "instance",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "method",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "<Object, Error>",
+                "type": "Promise"
+            },
+            "example": [
+                "\n```javascript\nreturn orm.findOne(\"user\", 1).then(user => {\n  return serializer.normalizeResponse(user, \"findOne\");\n}).then(response => {\n  /**\n   * {\n   *   firstName: \"foo\",\n   *   lastName; \"bar\"\n   * }\n})\n\nreturn orm.findAll(\"user\").then(users => {\n  return serializer.normalizeResponse(users, \"findAll\");\n}).then(response => {\n  /**\n   * [{\n   *   firstName: \"foo\",\n   *   lastName: \"bar\"\n   * }]\n});\n```"
+            ],
+            "class": "JSONSerializer"
+        },
+        {
+            "file": "src/serializer.js",
+            "line": 77,
+            "description": "Returns a single sequelize instance",
+            "itemtype": "method",
+            "name": "normalizeSingularResponse",
+            "params": [
+                {
+                    "name": "instance",
+                    "description": "Sequelize model instance",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "<Object, Error>",
+                "type": "Promise"
+            },
+            "example": [
+                "\n```javascript\nreturn orm.findOne(\"user\", 1).then(user => {\n  return serializer.normalizeSingularResponse(instance, \"findOne\");\n}).then(response => {\n  /**\n   * {\n   *   firstName: \"foo\",\n   *   lastName; \"bar\"\n   * }\n});\n```"
+            ],
+            "class": "JSONSerializer"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nBootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
+            "line": " docs/assets/vendor/bootstrap/js/bootstrap.min.js:1"
+        }
+    ]
+}
