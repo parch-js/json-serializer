@@ -65,6 +65,8 @@ export default class JSONSerializer {
         return this.normalizeSingularResponse(instance, fallbackName);
       case "findAll":
         return this.normalizeArrayResponse(instance, fallbackName);
+      default:
+        return this.normalizeSingularResponse(instance, fallbackName);
     }
   }
 

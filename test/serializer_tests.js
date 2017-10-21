@@ -54,5 +54,11 @@ describe("JSONSerializer", function () {
         expect(response.firstName).to.eql("John");
       });
     });
+
+    it("formats singular response by default", function () {
+      return serializer.normalizeResponse(user).then(response => {
+        expect(response.firstName).to.eql("John");
+      });
+    });
   });
 });
