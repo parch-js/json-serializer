@@ -1,6 +1,6 @@
 {
   "name": "@parch-js/json-serializer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JSONSerializer for parch to normalize request/response",
   "main": "index.js",
   "repository": "parch-js/json-serializer",
